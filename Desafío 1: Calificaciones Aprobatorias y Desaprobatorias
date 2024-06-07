@@ -1,0 +1,44 @@
+# Simulación de entradas con una lista de calificaciones
+calificaciones = [8, 9, 6, 7, 12, 11, 5, 0]  # Ajusta esta lista según sea necesario
+indice = 0  # Inicializamos el índice para recorrer la lista de calificaciones
+
+# Inicializamos las variables para la suma de calificaciones, contador de asignaturas,
+# contador de aprobados y contador de desaprobados
+suma_calificaciones = 0
+contador_asignaturas = 0
+contador_aprobados = 0
+contador_desaprobados = 0
+
+# Bucle while para recorrer las calificaciones
+while indice < len(calificaciones):
+    calificacion = calificaciones[indice]  # Obtenemos la calificación actual de la lista
+    print(f"Ingrese una calificación (entre 1 y 12) o 0 para terminar: {calificacion}")
+    indice += 1  # Incrementamos el índice para la próxima iteración
+    
+    if calificacion == 0:  # Si la calificación es 0, terminamos el bucle
+        break
+    
+    if calificacion < 1 or calificacion > 12:  # Verificamos si la calificación está fuera del rango válido
+        print("La calificación debe estar entre 1 y 12. Inténtalo de nuevo.")
+        continue  # Saltamos a la siguiente iteración si la calificación es inválida
+    
+    # Acumulamos la calificación en la suma total y aumentamos el contador de asignaturas
+    suma_calificaciones += calificacion
+    contador_asignaturas += 1
+    
+    # Contamos cuántos estudiantes aprobaron y cuántos desaprobaron
+    if calificacion >= 7:
+        contador_aprobados += 1
+    else:
+        contador_desaprobados += 1
+
+# Calculamos y mostramos el promedio si se ingresaron calificaciones válidas
+if contador_asignaturas > 0:
+    promedio = suma_calificaciones / contador_asignaturas
+    print(f"El promedio de las calificaciones es: {promedio:.2f}")
+else:
+    print("No se ingresaron calificaciones válidas.")
+
+# Mostramos la cantidad de estudiantes aprobados y desaprobados
+print(f"Cantidad de estudiantes aprobados: {contador_aprobados}")
+print(f"Cantidad de estudiantes desaprobados: {contador_desaprobados}")
