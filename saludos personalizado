@@ -1,0 +1,17 @@
+# Pedimos al usuario que ingrese su nombre
+nombre_usuario = input("Por favor ingrese su nombre: ")
+
+# Pedimos al usuario que ingrese su ciudad de origen
+ciudad_usuario = input("Por favor ingrese su ciudad de origen: ")
+**Yo le pondría ciudad_origen.
+
+# Definimos los valores predefinidos de nombre y ciudad
+nombre_predefinido = "Santiago"
+ciudad_predefinido = "Melo"
+
+# Imprimimos un saludo personalizado utilizando la información ingresada por el usuario
+print(f"Hola, {nombre_usuario} de {ciudad_usuario}, ¡es un placer conocerte!")
+**La efe no va. Borra las llaves.
+
+# Imprimimos un saludo personalizado utilizando los valores predefinidos
+print(f"Hola, {nombre_predefinido} de {ciudad_predefinido}, ¡es un placer conocerte!")
