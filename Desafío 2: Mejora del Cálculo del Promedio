@@ -1,0 +1,25 @@
+# Pedimos al usuario que ingrese todas las calificaciones separadas por comas
+entrada_calificaciones = "7, 8, 9, 6, 5, 10, 0"
+
+# Convertimos la cadena de entrada en una lista de calificaciones
+calificaciones = [int(c) for c in entrada_calificaciones.split(',')]
+
+# Inicializamos las variables para la suma de calificaciones, contador de asignaturas,
+# contador de aprobados y contador de desaprobados
+suma_calificaciones = 0
+contador_asignaturas = 0
+contador_aprobados = 0
+contador_desaprobados = 0
+
+# Recorremos la lista de calificaciones
+for calificacion in calificaciones:
+    if calificacion == 0:  # Si la calificación es 0, terminamos el bucle
+        break
+    
+    if calificacion < 1 or calificacion > 12:  # Verificamos si la calificación está fuera del rango válido
+        print(f"La calificación {calificacion} debe estar entre 1 y 12. Ignorando esta calificación.")
+        continue  # Saltamos a la siguiente iteración si la calificación es inválida
+    
+    # Acumulamos la calificación en la suma total y aumentamos el contador de asignaturas
+    suma_calificaciones += calificacion
+    contador_asignaturas += 1
