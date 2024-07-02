@@ -1,0 +1,14 @@
+# Pregunta 7: ¿Cómo ordenarías el inventario?
+# El método sort() es util para ordenar números de menor a mayor o texto alfabéticamente
+
+inventario.sort() # Aquí aplicamos el método en inventario para obtener el arreglo ordenado
+print(inventario) # Lo imprimimos para confirmar
+
+# Pregunta 4: ¿Cómo añadirías estos productos (frutillas, apios, papas) al inventario?
+
+nuevos_productos = ["frutillas", "apios", "papas"] # En primer lugar crearía un nuevo arreglo con los elementos a añadir
+
+# El método extend() nos permite agregarle al final de un arreglo los elementos de otro
+
+inventario.extend(nuevos_productos) # Ejecutamos el método extend()
+print(inventario) # Y lo imprimimos para confirmar que los cambios se hicieron correctamente
