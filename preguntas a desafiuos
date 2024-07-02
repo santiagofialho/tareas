@@ -1,0 +1,87 @@
+# Pregunta 1:
+# Para calcular el promedio de las notas de la clase las sumaría con la
+# función sum() y luego dividiría el resultado por la cantidad de notas.
+
+# Pregunta 2:
+# Para encontrar la nota más alta y la más baja usaría las funciones
+# min() y max() respectivamente. 
+
+# Pregunta 3:
+# Para identificar la nota que más se repite recorrería
+# al array notas con la función count() y lo registraría en un array temporal
+# para luego, con la función max() hallar el elemento que se repite una mayor
+# cantidad de veces. Luego, como que a cada elemento del array notas le corresponde
+# un elemento del array temporal, usaría el índice del elemento hallado con max() para
+# hallar el elemento que más se repite en notas.
+
+def promedio(notas):
+    return int(sum(notas) / len(notas))
+# Devuelve en entero porque no se califica con coma
+
+def hallar_cantidad(notas):
+    return [notas.count(nota) for nota in notas]
+# Devuelve un arreglo con la cantidad de veces que aparece cada nota
+
+def hallar_mayor(cantidades, notas):
+    return notas[cantidades.index(max(cantidades))]
+# Devuelve la nota con el índice de la nota que se repite más veces según el arreglo anterior
+# Si dos notas aparecen la misma cantidad de veces devuelve por defecto la que se encuentre en un menor índice
+
+def nota_repetida(notas):
+    notas.sort() # Si ordenamos la lista de menor a mayor nos devolverá la nota más repetida de menor valor
+    notas.reverse() # Si la invertimos nos devolverá la nota más repetida de mayor valor
+    return hallar_mayor(hallar_cantidad(notas), notas)
+# Devuelve el la nota que aparece más veces, usando
+
+# Creamos un menú para poder usar la app
+menu="""
+1) Agregar notas
+2) Eliminar notas
+3) Modificar notas
+4) Mostrar nota mínima
+5) Mostrar nota máxima
+6) Mostrar promedio
+7) Mostrar nota más repetida (máxima)
+8) Mostrar notas
+0) Salir
+"""
+
+opcion = 1 # Establecemos opcion como un número diferente a 0 ya que 0 se usará para salir
+
+while (opcion != 0): # Mientras la opción no sea 0 el menú se ejecutará, de otro modo saldrá del bucle
+    notas.sort() # Ordenamos por comodidad
+    print(menu) # Imprimimos el menú
+    opcion = int(input("Ingrese un numero de opcion: ")) # Pedimos el número de opción, suponiendo que el usuario ingresará sí o sí un entero y este espacio no esté vacío
+    if opcion == 1: # Agregar notas
+        print("Agregar notas")
+        notas.append(int(input("Ingrese una nota: ")))
+    elif opcion == 2: # Eliminar notas por índice
+        print("Eliminar notas")
+        print(f"Notas del grupo: {notas}")
+        indice = int(input("Ingrese el indice de la nota a eliminar: "))
+        while (indice < 0 or indice >= len(notas)): # Para evitar un índice fuera de rango usamos un bucle while
+            indice = int(input("Ingrese un índice correcto: "))
+        notas.pop(indice) # La función pop que elimina según el índice
+    elif opcion == 3: # Modificar notas por índice
+        print("Modificar notas")
+        print(f"Notas del grupo: {notas}")
+        indice = int(input("Ingrese el indice de la nota a modificar: "))
+        while (indice < 0 or indice >= len(notas)): # Repetimos el bucle para evitar errores de rango
+            indice = int(input("Ingrese un índice correcto: "))
+        notas[indice] = int(input("Ingrese la nueva nota: "))
+    elif opcion == 4: # Nota mínima
+        print(f"Nota mínima: {min(notas)}") # La función min() muestra el valor mínimo
+    elif opcion == 5: # Nota máxima
+        print(f"Nota máxima: {max(notas)}") # mientras que máx() muestra el máximo
+    elif opcion == 6: # Promedio
+        print(f"Promedio: {promedio(notas)}") # Llamamos a la función que saca el promedio
+    elif opcion == 7: # Nota máxima más repetida
+        print(f"Nota más alta más repetida: {nota_repetida(notas)}") # Llamamos a la función que muestra el valor más repetido
+    elif opcion == 8: # Mostrar notas
+        print(f"Notas del grupo: {notas}")
+    elif opcion == 0:
+        print("Saliendo...")
+    else:
+        print("Opcion no valida")
+    if (opcion != 0):
+        input("Esperando respuesta...")
