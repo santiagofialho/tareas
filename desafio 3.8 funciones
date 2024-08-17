@@ -1,0 +1,19 @@
+def es_primo(numero):
+    if numero <= 1:
+        return False
+    for i in range(2, int(numero ** 0.5) + 1):
+        if numero % i == 0:
+            return False
+    return True
+
+def contar_primos(lista):
+    return sum(1 for numero in lista if es_primo(numero))
+
+def main():
+    lista = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    print(f"Cantidad de números primos en la lista: {contar_primos(lista)}")
+    numero = 17
+    print(f"¿El número {numero} es primo? {es_primo(numero)}")
+
+# Ejecutar la función main:
+main()
