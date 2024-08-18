@@ -1,0 +1,9 @@
+def capitalizar_palabras(cadena): 
+return cadena.title() 
+# Ejemplo de uso 
+cadena = "hola mundo, esto es python" 
+resultado = capitalizar_palabras(cadena) 
+print(resultado)
+En este ejercicio, lo que  hizo fue capitalizar la primera letra de cada palabra en una cadena, conservando intacto el resto del formato. 
+Para esto utilice  title() que simplifica el proceso, ya que se encarga automáticamente de identificar cada palabra. 
+Con esto se hace que el  código sea breve y altamente legible. (Referencia a la línea de código de la función capitalizar_palabras).
