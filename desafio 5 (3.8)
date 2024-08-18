@@ -1,0 +1,9 @@
+def es_palindromo(cadena): 
+cadena = cadena.replace(" ", "").lower() # Ignorar espacios y mayúsculas 
+return cadena == cadena[::-1] 
+# Ejemplo de uso 
+cadena = "Anita lava la tina" 
+resultado = es_palindromo(cadena) 
+print(f"¿Es palíndromo? {resultado}")
+Desafío 5: Verificación de Palíndromos
+La mayor dificultad fue pensar los detalles como ignorar espacios y diferencias de mayúsculas y minúsculas en las cadenas. Para esto se uso replace y lower antes de realizar la comparación inversa. Con esta solución logrè que se consideren todas las variaciones posibles de un palíndromo. (Referencia a la línea de código de la función es_palindromo).
