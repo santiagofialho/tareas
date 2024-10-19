@@ -1,0 +1,21 @@
+python
+Copiar código
+class Musico:
+    def instrumento(self):
+        pass
+
+class Guitarrista(Musico):
+    def instrumento(self):
+        return "Toco la guitarra"
+
+class Baterista(Musico):
+    def instrumento(self):
+        return "Toco la batería"
+
+# Creación de objetos
+musico1 = Guitarrista()
+musico2 = Baterista()
+
+# Demostración de polimorfismo
+print(musico1.instrumento())  # Salida: Toco la guitarra
+print(musico2.instrumento())  # Salida: Toco la batería
