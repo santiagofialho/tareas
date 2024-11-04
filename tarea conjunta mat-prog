@@ -1,0 +1,74 @@
+import sys
+
+class Grafo:
+    def _init_(self, num_nodos):
+        self.num_nodos = num_nodos
+        self.matriz_adyacencia = [[0] * num_nodos for _ in range(num_nodos)]
+
+    def agregar_nodo(self):
+        self.num_nodos += 1
+        for fila in self.matriz_adyacencia:
+            fila.append(0)
+        self.matriz_adyacencia.append([0] * self.num_nodos)
+
+    def agregar_arista(self, nodo_origen, nodo_destino, peso):
+        if nodo_origen < self.num_nodos and nodo_destino < self.num_nodos:
+            self.matriz_adyacencia[nodo_origen][nodo_destino] = peso
+
+    def mostrar_matriz_adyacencia(self):
+        for fila in self.matriz_adyacencia:
+            print(fila)
+
+    def dijkstra(self, nodo_inicio):
+        distancias = [sys.maxsize] * self.num_nodos
+        distancias[nodo_inicio] = 0
+        visitados = [False] * self.num_nodos
+        predecesores = [-1] * self.num_nodos
+
+        for _ in range(self.num_nodos):
+            min_distancia = sys.maxsize
+            u = -1
+            for i in range(self.num_nodos):
+                if not visitados[i] and distancias[i] < min_distancia:
+                    min_distancia = distancias[i]
+                    u = i
+            visitados[u] = True
+            for v in range(self.num_nodos):
+                if (self.matriz_adyacencia[u][v] > 0 and not visitados[v]
+                        and distancias[u] + self.matriz_adyacencia[u][v] < distancias[v]):
+                    distancias[v] = distancias[u] + self.matriz_adyacencia[u][v]
+                    predecesores[v] = u
+
+        for destino in range(self.num_nodos):
+            if distancias[destino] == sys.maxsize:
+                print(f"No hay camino de {nodo_inicio} a {destino}")
+            else:
+                print(f"Distancia mínima de {nodo_inicio} a {destino}: {distancias[destino]}")
+                self.mostrar_camino(destino, predecesores)
+
+    def mostrar_camino(self, destino, predecesores):
+        camino = []
+        actual = destino
+        while actual != -1:
+            camino.insert(0, actual)
+            actual = predecesores[actual]
+        print("Camino:", " -> ".join(map(str, camino)))
+
+
+# Ejemplo de uso
+grafo = Grafo(5)
+grafo.agregar_arista(0, 1, 10)
+grafo.agregar_arista(0, 2, 3)
+grafo.agregar_arista(1, 2, 1)
+grafo.agregar_arista(1, 3, 2)
+grafo.agregar_arista(2, 1, 4)
+grafo.agregar_arista(2, 3, 8)
+grafo.agregar_arista(2, 4, 2)
+grafo.agregar_arista(3, 4, 7)
+grafo.agregar_arista(4, 3, 9)
+
+print("Matriz de Adyacencia:")
+grafo.mostrar_matriz_adyacencia()
+
+print("\nCamino más corto desde el nodo 0:")
+grafo.dijkstra(0)
